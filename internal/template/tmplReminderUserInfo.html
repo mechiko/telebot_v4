@@ -1,0 +1,47 @@
+{{- if ne .MissionDay0 "" -}}
+<b>Сегодня</b> {{.MissionDay0}} {{print "\n\n"}}
+{{- end -}}
+{{- if ne .MissionDay3 "" -}}
+<b>Через 3 дня</b> {{.MissionDay3}} {{print "\n\n"}}
+{{- end -}}
+{{- if ne .MissionDay30 "" -}}
+<b>Через 30 дней</b> {{.MissionDay30}} {{print "\n\n"}}
+{{- end -}}
+{{- if ne (len .ExamenDay0) 0 -}}
+<b>Сегодня экзамен(ы)</b> {{print "\n"}}
+{{- range $i, $p := .ExamenDay0 -}}
+<i>    {{$p.Name}}</i>: {{$p.DateStr}} {{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .ExamenDay3) 0 -}}
+<b>Через 3 дня экзамен(ы)</b> {{print "\n"}}
+{{- range $i, $p := .ExamenDay3 -}}
+<i>    {{$p.Name}}</i>: {{$p.DateStr}} {{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .ExamenDay30) 0 -}}
+<b>Через 30 дней экзамен(ы)</b> {{print "\n"}}
+{{- range $i, $p := .ExamenDay30 -}}
+<i>    {{$p.Name}}</i>: {{$p.DateStr}} {{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .ExamenDayOt60) 0 -}}
+<b>Через 60 дней экзамен(ы)</b> {{print "\n"}}
+{{- range $i, $p := .ExamenDayOt60 -}}
+<i>    {{$p.Name}}</i>: {{$p.DateStr}} {{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .ExamenEmpty) 0 -}}
+<b>Даты экзаменов не заполнены:</b> {{print "\n"}}
+{{- range $i, $p := .ExamenEmpty -}}
+<i>    {{$p.Name}}</i>: <i>[нет даты экзамена]</i> {{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .ExamenBad) 0 -}}
+<b>Даты экзаменов некорректны: формат ДД.ММ.ГГГГ</b> {{print "\n"}}
+{{- range $i, $p := .ExamenBad -}}
+<i>    {{$p.Name}}</i>: <i>[некорректно] {{.DateStr}}</i> {{print "\n"}}
+{{- end -}}
+{{- end -}}
+[debug user reminder to {{.UserIdent}} ({{.UserId}})]
+

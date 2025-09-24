@@ -1,0 +1,3 @@
+{{if eq (len .Items) 0}}командировок нет{{else}}Список командировок:
+{{range $i, $p := .Items}}[#{{$p.ID}}] {{$p.Start}} {{$p.End}} {{$p.Place}}{{print "\n"}}{{end}}
+{{end}}

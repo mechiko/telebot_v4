@@ -1,0 +1,4 @@
+{{if ne .ErrorTxt ""}}<i>{{.ErrorTxt}}</i>{{end}}
+<b>Место:</b> {{if eq .Place ""}}<i>[добавьте место через меню]</i>{{else}}{{.Place}}{{end}}
+<b>Дата начала:</b> {{if eq .Start ""}}<i>[добавьте дату через меню]</i>{{else}}{{if ne (len .Start) 10}}<b><u>{{.Start}}</u></b>{{else}}{{.Start}}{{end}}{{end}}
+<b>Дата окончания:</b> {{if eq .End ""}}<i>[добавьте дату через меню]</i>{{else}}{{if ne (len .End) 10}}<b><u>{{.End}}</u></b>{{else}}{{.End}}{{end}}{{end}}

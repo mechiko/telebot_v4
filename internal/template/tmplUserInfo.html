@@ -1,0 +1,28 @@
+{{- if ne .Mission "" -}}
+{{.Mission}}{{print "\n"}}
+{{- end -}}
+{{- if ne (len .BeforeExamens) 0 -}}
+<b>Сроки экзаменов до командировки:</b>{{print "\n"}}
+{{- range $i, $p := .BeforeExamens -}}
+<i>    {{$p.Name}}</i>: {{$p.DateStr}}{{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .ConflictExamens) 0 -}}
+<b>Сдайте досрочно экзамены:</b>{{print "\n"}}
+{{- range $i, $p := .ConflictExamens -}}
+<i>    {{$p.Name}}</i>: {{$p.DateStr}}{{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .Empty) 0 -}}
+<b>Исправьте пустые даты:</b>{{print "\n"}}
+{{- range $i, $p := .Empty -}}
+<i>    {{$p.Name}}</i>: [<b>пустая дата</b>]{{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .Bad) 0 -}}
+<b>Некорректные даты:</b>{{print "\n"}}
+{{- range $i, $p := .Bad -}}
+<i>    {{$p.Name}}</i>: {{$p.DateStr}}[<b>формат ДД.ММ.ГГГГ</b>]{{print "\n"}}
+{{- end -}}
+{{- end -}}
+

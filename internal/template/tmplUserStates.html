@@ -1,0 +1,2 @@
+{{range $i, $p := .Intro}}<b>{{$i}}</b>: {{$p}}{{print "\n"}}{{- end -}}
+{{range $i, $p := .Examens}}<b>{{$i}}</b>: {{if ne (len $p) 10}}<b><u>{{$p}}</u></b>{{else}}{{$p}}{{end}}{{print "\n"}}{{end}}

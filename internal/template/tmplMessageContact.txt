@@ -1,0 +1,5 @@
+Данные контакта:
+PhoneNumber:{{.PhoneNumber}} 
+FirstName:{{.FirstName}} 
+LastName:{{.LastName}} 
+UserID:{{.UserID}} 

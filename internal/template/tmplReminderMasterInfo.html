@@ -1,0 +1,56 @@
+{{- if ne (len .MissionDay0) 0 -}}
+<b>Командировка(и) сегодня :</b>{{print "\n"}}
+{{- range $i, $p := .MissionDay0 -}}
+<i>    {{.UserIdent}}</i> {{.Place}} с {{.Start}} по {{.End}} {{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .MissionDay3) 0 -}}
+<b>Командировка(и) через 3 дня:</b> {{print "\n"}}
+{{- range $i, $p := .MissionDay3 -}}
+<i>    {{.UserIdent}}</i> {{.Place}} с {{.Start}} по {{.End}} {{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .MissionDay30) 0 -}}
+<b>Командировка(и) через 30 дней:</b> {{print "\n"}}
+{{- range $i, $p := .MissionDay30 -}}
+<i>    {{.UserIdent}}</i> {{.Place}} с {{.Start}} по {{.End}} {{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .ExamenDay0) 0 -}}
+<b>Сегодня экзамен(ы)</b> {{print "\n"}}
+{{- range $i, $p := .ExamenDay0 -}}
+<i>    {{.UserIdent}} {{$p.ExamenKey}}</i>: {{$p.Date}} {{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .ExamenDay3) 0 -}}
+<b>Через 3 дня экзамен(ы)</b> {{print "\n"}}
+{{- range $i, $p := .ExamenDay3 -}}
+<i>    {{.UserIdent}} {{$p.ExamenKey}}</i>: {{$p.Date}} {{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .ExamenDay30) 0 -}}
+<b>Через 30 дней экзамен(ы)</b> {{print "\n"}}
+{{- range $i, $p := .ExamenDay30 -}}
+<i>    {{.UserIdent}} {{$p.ExamenKey}}</i>: {{$p.Date}} {{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .ExamenDayOt60) 0 -}}
+<b>Через 60 дней экзамен(ы)</b> {{print "\n"}}
+{{- range $i, $p := .ExamenDayOt60 -}}
+<i>    {{.UserIdent}} {{$p.ExamenKey}}</i>: {{$p.Date}} {{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .ExamenEmpty) 0 -}}
+<b>Даты экзаменов не заполнены:</b> {{print "\n"}}
+{{- range $i, $p := .ExamenEmpty -}}
+<i>    {{.UserIdent}} {{$p.ExamenKey}}</i>: {{$p.Date}} {{print "\n"}}
+{{- end -}}
+{{- end -}}
+{{- if ne (len .ExamenBad) 0 -}}
+<b>Даты экзаменов некорректны: формат ДД.ММ.ГГГГ</b> {{print "\n"}}
+{{- range $i, $p := .ExamenBad -}}
+<i>    {{.UserIdent}} {{$p.ExamenKey}}</i>: {{$p.Date}} {{print "\n"}}
+{{- end -}}
+{{- end -}}
+[debug master reminder to {{.UserIdent}} ({{.UserId}})]
+
