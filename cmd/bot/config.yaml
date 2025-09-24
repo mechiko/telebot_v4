@@ -1,0 +1,18 @@
+database:
+    connectionuri: ?cache=shared&mode=rw
+    dbname: telebot.db
+    driver: sqlite3
+    timeout: 2
+debug: true
+hostname: tgx.egais-help.ru
+htmlport:  "3550"
+hostport: "3650"
+telebot: true
+groupid: 
+testgroupid: -1001876139554
+admingroupid: -1001955148390
+channelid: -1001893512470
+adminid: 68255313
+layouts:
+    timelayout: "02.01.2006 15:04:05"
+    timelayoutday: "02.01.2006"

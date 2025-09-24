@@ -1,0 +1,94 @@
+settings:
+  parse_mode: html
+  locales_dir: 'locales'
+
+config:
+
+commands:
+  /start: 'статистика'
+  /clear: 'если что то пошло не так'
+  /mission: 'командировка'
+  /examens: 'экзамены'
+
+buttons:
+  clear: 'сброс'
+  mission: 'командировки'
+  intro:
+    unique: intro
+    callback_data: ИДЕНТ
+    text: ИДЕНТ
+  exam1:
+    unique: exam1
+    callback_data: Медосмотр
+    text: Медосмотр
+  exam2:
+    unique: exam2
+    callback_data: ОПЭ АС, ДИ
+    text: ОПЭ АС, ДИ
+  exam3:
+    unique: exam3
+    callback_data: ОТ
+    text: ОТ
+  exam4:
+    unique: exam4
+    callback_data: ППБ
+    text: ППБ
+  exam5:
+    unique: exam5
+    callback_data: ПРБ
+    text: ПРБ
+  exam6:
+    unique: exam6
+    callback_data: ФНП
+    text: ФНП
+  exam7:
+    unique: exam7
+    callback_data: ЭБ
+    text: ЭБ
+  exitState:
+    unique: exitState
+    callback_data: exitState
+    text: Выход
+  mistart:
+    unique: mistart
+    callback_data: Начало
+    text: Начало
+  miend:
+    unique: miend
+    callback_data: Окончание
+    text: Окончание
+  miplace1:
+    unique: miplace1
+    callback_data: КП РАО
+    text: КП РАО
+  miplace2:
+    unique: miplace2
+    callback_data: Курск
+    text: Курск
+  miplace3:
+    unique: miplace3
+    callback_data: Северск
+    text: Северск
+  miplace4:
+    unique: miplace4
+    callback_data: Обучение
+    text: Обучение
+  misave:
+    unique: misave
+    callback_data: misave
+    text: Сохранить
+  miclear:
+    unique: miclear
+    callback_data: miclear
+    text: Очистить
+
+markups:
+  menuEditUserStates:
+  - [intro, exam1, exam2]
+  - [exam3, exam4, exam5 ]
+  - [exam6, exam7, exitState ]
+
+  menuMissionAdd:
+  - [mistart, miend, miclear ]
+  - [miplace1, miplace2, miplace3]
+  - [miplace4, exitState]
