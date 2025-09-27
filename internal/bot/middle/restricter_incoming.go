@@ -112,7 +112,7 @@ func RestricterIn(app entity.Application) tele.MiddlewareFunc {
 				}
 			}
 			// все что не разрешено запрещено
-			enabledTexts := []string{`/start`, `/clear`, `/mission`, `examens`}
+			enabledTexts := []string{`/start`, `/clear`, `/mission`, `/examens`}
 			if slices.Contains(enabledTexts, c.Text()) {
 				return next(c)
 			}

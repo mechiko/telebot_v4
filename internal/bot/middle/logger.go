@@ -3,6 +3,7 @@ package middle
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 
 	"github.com/mechiko/telebot_v4/internal/entity"
 	tele "gopkg.in/telebot.v4"
@@ -46,4 +47,43 @@ func Logger(app entity.Application) tele.MiddlewareFunc {
 			return next(c)
 		}
 	}
+}
+
+func Logg(u *tele.Update, app entity.Application) error {
+	// if u.Message == nil {
+	// 	return nil
+	// }
+	updateJSON, err := json.MarshalIndent(u, "", "  ")
+	if err != nil {
+		return fmt.Errorf("logg update to json %w", err)
+	}
+	updateBot := &entity.Update{
+		ID:      int64(u.ID),
+		Message: "middleware poller logg",
+		Update:  string(updateJSON),
+	}
+	// if chat := u.Message.Chat; chat != nil {
+	// 	updateBot.Chat = chat.ID
+	// }
+	// if sender := u.Message.Sender; sender != nil {
+	// 	updateBot.Sender = sender.ID
+	// }
+	// if recepient := u.Message.OriginalSender; recepient != nil {
+	// 	recepientData, _ := json.Marshal(recepient)
+	// 	updateBot.Recepient = string(recepientData)
+	// }
+	// updateData, _ := json.Marshal(update)
+	// updateBot.Update = string(updateData)
+	if err := app.GetRepo().GetUpdates().Insert(updateBot); err != nil {
+		e := errors.Unwrap(err)
+		if er, ok := e.(*sqlite.Error); ok {
+			// 1555 - code:1555 msg:constraint failed: UNIQUE constraint failed: chats.id (1555)
+			if er.Code() != 1555 {
+				app.GetLogger().Errorf("middleware poll:logger db insert %s", err.Error())
+			}
+		} else {
+			app.GetLogger().Errorf("middleware :logger db insert %s", err.Error())
+		}
+	}
+	return nil
 }

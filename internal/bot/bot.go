@@ -37,9 +37,12 @@ func New(app entity.Application, path string) (*Bot, error) {
 		app.GetLogger().Errorf("telebot %v %v", c.Sender().Recipient(), err)
 	}
 	sets.Token = app.GetConfiguration().Token
-	sets.Poller = &telebot.LongPoller{Timeout: 10 * time.Second}
+	poller := &telebot.LongPoller{Timeout: 10 * time.Second}
+	sets.Poller = telebot.NewMiddlewarePoller(poller, func(u *telebot.Update) bool {
+		middle.Logg(u, app)
+		return true
+	})
 	sets.Verbose = false
-	// .AllowedUpdates = []string{"callback_query", "message"}
 
 	b, err := telebot.NewBot(sets)
 	if err != nil {

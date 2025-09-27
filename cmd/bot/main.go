@@ -10,7 +10,7 @@ import (
 func main() {
 	// Run
 	exit, err := cmdapp.Run()
-	zaplog.Logger.Sugar().Debugf("main() for Run exit code [%v] error [%s]", exit, err.Error())
+	zaplog.Logger.Sugar().Debugf("main() for Run exit code [%v] error [%v]", exit, err)
 	time.Sleep(2 * time.Second)
 	zaplog.Logger.Sugar().Debugf("END OF GAME!\n")
 }
